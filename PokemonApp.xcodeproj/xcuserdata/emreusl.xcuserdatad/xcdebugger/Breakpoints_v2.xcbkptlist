@@ -78,8 +78,8 @@
             filePath = "PokemonApp/Scenes/Home/HomeScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "reloadCollectionView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -128,7 +128,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "getPokemons()"
+            landmarkName = "getPokemonURLs()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

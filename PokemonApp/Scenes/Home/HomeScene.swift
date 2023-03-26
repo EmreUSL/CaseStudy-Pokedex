@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 protocol HomeSceneInterface: AnyObject {
     func reloadCollectionView()
