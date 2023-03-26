@@ -41,8 +41,8 @@ extension HomeScene: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: PokemonCollectionViewCell.self, indexPath: indexPath)
         let name  = viewModel.pokemonData[indexPath.item].name.capitalizeFirstLetter()
-        let image = viewModel.pokemonData[indexPath.item].sprites.front_default
-        cell.configureCell(name: name, image: image)
+        let imageStr = viewModel.pokemonData[indexPath.item].sprites.front_default
+        cell.configureCell(name: name, imageStr: imageStr)
         return cell
     }
     

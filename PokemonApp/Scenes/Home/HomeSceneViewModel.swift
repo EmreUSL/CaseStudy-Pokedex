@@ -17,14 +17,15 @@ protocol HomeSceneViewModelInterface {
 
 final class HomeSceneViewModel {
     var view: HomeSceneInterface?
+    var count: Int = 0
     var service: ServiceManagerProtocol = ServiceManager()
-    var pokemon: [PokemonModel] = []
+    var pokemonURL: [PokemonModel] = []
     var pokemonData = [PokemonDetail]()
 }
 
 extension HomeSceneViewModel: HomeSceneViewModelInterface {
     func viewWillAppear() {
-        getPokemons()
+        getPokemonURLs()
     }
     
     func viewDidLoad() {
@@ -32,14 +33,14 @@ extension HomeSceneViewModel: HomeSceneViewModelInterface {
     }
     
     var numberOfSection: Int {
-        return pokemon.count
+        return pokemonURL.count
     }
     
-    private func getPokemons() {
+    private func getPokemonURLs() {
         service.getPokemonURLs { result in
             switch result {
             case .success(let pokemon):
-                self.pokemon = pokemon
+                self.pokemonURL = pokemon
                 self.getAllPokemons()
             case .failure(let error):
                 print(error)
@@ -49,19 +50,24 @@ extension HomeSceneViewModel: HomeSceneViewModelInterface {
     
     private func getAllPokemons() {
         
-        for item in self.pokemon {
+        for item in self.pokemonURL {
             guard let stringUrl = item.url else { return }
             service.getAllPokemons(url: stringUrl) { result in
                 switch result {
                 case .success(let pokemon):
                     self.pokemonData.append(pokemon)
-                    if self.pokemonData.count == 40 {
-                        self.view?.reloadCollectionView()
-                    }
+                    self.count += 1
+                    self.countEqual()
                 case .failure(let error):
                     print(error)
                 }
             }
+        }
+    }
+    
+    private func countEqual() {
+        if count == pokemonURL.count {
+            view?.reloadCollectionView()
         }
     }
 }

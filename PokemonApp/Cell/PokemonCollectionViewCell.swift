@@ -26,10 +26,10 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         pokemonView.layer.shadowOpacity = 0.5
     }
     
-    public func configureCell(name: String, image: String) {
+    public func configureCell(name: String, imageStr: String) {
         pokemonLabel.text = name
         
-        let url = URL(string: image)
+        let url = URL(string: imageStr)
         pokemonImage.kf.setImage(with: url)
     }
 
